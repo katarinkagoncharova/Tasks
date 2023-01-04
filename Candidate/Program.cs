@@ -38,7 +38,7 @@
 
             Candidate[] Candidates = { C1, C2, C3, C4, C5 };
 
-            Console.WriteLine("All streets: ");
+            Console.WriteLine("All streets:  ");
 
             for (int i = 0; i < Candidates.Length; i++)
             {
