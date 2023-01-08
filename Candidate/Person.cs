@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace ConsoleApp2
+namespace ConsoleApp2;
+
+internal class Person
 {
-    internal class Person
-    {
-        public string Name;
-        public string Surname;
-        public Address Address;
-        public Person(string name, string surname, Address address)
-        { 
-            Name = name; 
-            Surname = surname;
-            Address = address;
-       
-        }
- 
+    public string Name { get; set; }
+    public string Surname { get; set; }
+    public Address Address { get; set; }
+    public Person(string name, string surname, Address address)
+    { 
+        Name = name; 
+        Surname = surname;
+        Address = address;
+   
     }
+
 }
