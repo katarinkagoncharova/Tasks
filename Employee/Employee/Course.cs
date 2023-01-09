@@ -6,10 +6,10 @@ namespace Employee
     {
       public string CourseName { get; set; } 
       public string CourseDescripsion { get; set; }
-      public Course(string coursename, string coursedescripsion)
+      public Course(string courseName, string courseDescripsion)
         {
-            CourseName = coursename;
-            CourseDescripsion = coursedescripsion;
+            CourseName = courseName;
+            CourseDescripsion = courseDescripsion;
         }
     }
 }

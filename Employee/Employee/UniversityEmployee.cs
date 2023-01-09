@@ -6,10 +6,10 @@ namespace Employee
     {
         public Person Person { get; set; }
         public string TaxID { get; set; }
-        public UniversityEmployee (Person person, string taxid)
+        public UniversityEmployee (Person person, string taxId)
         {
             Person = person;
-            TaxID = taxid;
+            TaxID = taxId;
         }
 
         public virtual string GetOfficialDuties()

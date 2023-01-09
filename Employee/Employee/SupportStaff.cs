@@ -4,8 +4,8 @@ namespace Employee
 {
     internal class SupportStaff: UniversityEmployee
     {
-        public string Function;
-        public SupportStaff(Person person, string taxid, string function): base(person, taxid)
+        public string Function { get;set;}
+        public SupportStaff(Person person, string taxId, string function): base(person, taxId)
         {
             Function = function;
         }

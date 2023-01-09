@@ -6,10 +6,10 @@ namespace Employee
     {
         public string ScienceDegree { get; set; }
         public string Rank { get; set; }
-        public DegreeTeacher(Person person, string taxid, Course course, string sciencedegree, string rank) :
-                            base(person, taxid, course)
+        public DegreeTeacher(Person person, string taxId, Course course, string scienceDegree, string rank) :
+                            base(person, taxId, course)
         {
-            ScienceDegree = sciencedegree;
+            ScienceDegree = scienceDegree;
             Rank = rank;
         }
         public override string GetOfficialDuties()
