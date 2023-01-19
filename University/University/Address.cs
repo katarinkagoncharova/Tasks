@@ -45,7 +45,16 @@ internal class Address
         Street = street;
         HouseNumber = housenumber;
         ApartmentNumber = apartmentnumber;
-     
     }
+
+
+        public override bool Equals(object? obj)
+    {
+        Address other = obj as Address;
+        bool equalResult = (this.City == other?.City) && (this.Street == other?.Street) &&
+                           (this.HouseNumber == other?.HouseNumber) && (this.ApartmentNumber == other?.ApartmentNumber);
+        return equalResult;
+    }
+
    
 }

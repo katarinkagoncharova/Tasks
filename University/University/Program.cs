@@ -137,19 +137,19 @@ internal class Program
 
         Teacher teacher1 = new Teacher(
             new Person("Donskaya", "Irina", new Address("Minsk", "Sovetskaya", 41, 17)),
-            "23344jj",
+            "23344jy",
             new Course("Language", "Belarusian language course"));
 
         DegreeTeacher dTeacher1 = new DegreeTeacher(
             new Person("Smirnov", "Alexsandr", new Address("Smolevichi", "Mira", 81, 19)),
-            "52364gh",
-            new Course("Mathematics", "Probability theoty"),
+            "23344jj",
+            new Course("Language", "Probability theoty"),
             "Doctor of Sciences",
             "Docent");
 
         SupportStaff staff1 = new SupportStaff(
             new Person("Kuzina", "Elena", new Address("Minsk", "Angarskaya", 15, 27)),
-            "14236jy",
+            "23344jj",
             "Cleaner");
 
         SupportStaff staff2 = new SupportStaff(
@@ -174,6 +174,39 @@ internal class Program
         );
 
 
+        University un2 = new University(
+          new Address("Minsk", "Bogdanovicha", 85, 0),
+          new Rector(new Person("Belov", "Egor", new Address("Minsk", "Kurchatova", 12, 32)), "85412lj"),
+          employees,
+          new List<Building> {
+            new Building("Building", new Address("Minsk", "Bogdanovicha", 85, 0),
+              new List < Room > {
+                new Room(201, "lecture"),
+                new Room(203, "laboratory"),
+                new Room(207, "auxiliary")
+              })
+          }
+        );
+
+        Candidate c4 = new Candidate(new Person("Abramov", "Semen", new Address("Minsk", "Amurskaya", 5, 48)),
+                                    new List<SubjectScore>
+                                      {
+                                         new SubjectScore(60, "Math"),
+                                         new SubjectScore(70, "Physics"),
+                                         new SubjectScore(80, "Literature"),
+                                         new SubjectScore(90, "Language")
+                                      }
+                                    );
+
+        c4.AddSubject(new SubjectScore(90, "English"));
+
+        un2.AddEmployee(new Teacher(
+            new Person("Donskaya", "Irina", new Address("Minsk", "Sovetskaya", 41, 17)),
+            "23344jjhh",
+            new Course("Language", "Belarusian language course")));
+
+        
+                
         Console.ReadKey(); 
     }
 }

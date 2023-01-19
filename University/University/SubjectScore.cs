@@ -24,5 +24,12 @@ namespace MyApplication
             Score = score;
             SubjectName = subjectname;  
         }
+        public override bool Equals(object? obj)
+        {
+            SubjectScore other = obj as SubjectScore;
+            bool equalResult = (this.SubjectName == other?.SubjectName);
+            return equalResult;
+        }
+
     }
 }

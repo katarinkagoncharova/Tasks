@@ -14,5 +14,7 @@ namespace MyApplication
         {
             return $"{Person.Name} {Person.Surname} is a Teacher. Course is {Course.CourseName}";
         }
+
+       
     }
 }

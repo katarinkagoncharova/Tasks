@@ -9,5 +9,11 @@ internal class Building:Assets
         Address = address;
         Rooms = rooms;
     }
+    public override bool Equals(object? obj)
+    {
+        Building other = obj as Building;
+        bool equalResult = (this.Address.Equals(other?.Address));
+        return equalResult;
+    }
 
 }

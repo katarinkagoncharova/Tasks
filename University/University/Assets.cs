@@ -7,5 +7,5 @@ internal abstract class Assets
     { 
         NameAssets = nameAssets;
     }
-
+    
 }

@@ -1,5 +1,4 @@
 ﻿
-
 namespace MyApplication
 {
     internal class Course
@@ -11,5 +10,20 @@ namespace MyApplication
             CourseName = courseName;
             CourseDescripsion = courseDescripsion;
         }
+
+        public override bool Equals(object? obj)
+        {
+            Course other = obj as Course;
+            bool equalResult = (this.CourseName == other?.CourseName);
+            return equalResult;
+        }
+
+
     }
-}
+
+
+
+
+ }
+
+

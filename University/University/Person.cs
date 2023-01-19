@@ -14,5 +14,11 @@ internal class Person
         Address = address;
    
     }
+    public override bool Equals(object? obj)
+    {
+        Person other = obj as Person;
+        bool equalResult = (this.Name == other?.Name) && (this.Surname == other?.Surname);
+        return equalResult;
+    }
 
 }

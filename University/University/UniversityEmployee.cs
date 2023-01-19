@@ -13,8 +13,14 @@ namespace MyApplication
         }
 
         public abstract string GetOfficialDuties();
-        //{
-            //return $"{Person.Name} {Person.Surname} is an Employee";
-        //}
+        
+        
+        public override bool Equals(object? obj)
+        {
+            UniversityEmployee other = obj as UniversityEmployee;
+            bool equalResult = (this.TaxID == other?.TaxID);
+            return equalResult;
+        }
+
     }
 }
