@@ -10,15 +10,15 @@ internal class Room
         Number = number;
         Purpose = purpose;
     }
-
+        
     public override bool Equals(object? obj)
     {
-        Room other = obj as Room;
-        bool equalResult = (this.Purpose == other?.Purpose); 
+        if (obj is Room other)
+        {
+            bool equalResult = (this.Purpose == other.Purpose);
             return equalResult;
+        }
+        return false;
     }
-
-
-
 }
 

@@ -11,28 +11,28 @@ namespace MyApplication
             SubjectScores = subjectScores;
         }
 
-
         public override bool Equals(object? obj)
         {
-            Candidate other = obj as Candidate;
-            bool equalResult = this.Person.Equals(other?.Person);
-            return equalResult;
+            if (obj is Candidate other)
+            {
+                bool equalResult = (this.Person.Equals(other.Person));
+                return equalResult;
+            }
+            return false;
         }
 
+       
         public bool AddSubject(SubjectScore subjectitem)
         {
-            foreach (var subjectScore in SubjectScores) 
+            if (SubjectScores.Contains(subjectitem))
             {
-                if (subjectScore.Equals(subjectitem))
-                {
-                    return false;
-                }
-             
+                return false;
             }
+
             SubjectScores.Add(subjectitem);
             return true;
+
         }
 
     }
-
 }

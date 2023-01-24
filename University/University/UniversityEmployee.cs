@@ -13,13 +13,15 @@ namespace MyApplication
         }
 
         public abstract string GetOfficialDuties();
-        
-        
+       
         public override bool Equals(object? obj)
         {
-            UniversityEmployee other = obj as UniversityEmployee;
-            bool equalResult = (this.TaxID == other?.TaxID);
-            return equalResult;
+            if (obj is UniversityEmployee other)
+            {
+                bool equalResult = (this.TaxID == other.TaxID);
+                return equalResult;
+            }
+            return false;
         }
 
     }

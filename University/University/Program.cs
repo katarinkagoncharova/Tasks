@@ -176,7 +176,7 @@ internal class Program
 
         University un2 = new University(
           new Address("Minsk", "Bogdanovicha", 85, 0),
-          new Rector(new Person("Belov", "Egor", new Address("Minsk", "Kurchatova", 12, 32)), "85412lj"),
+          new Rector(new Person("Chernov", "Maxim", new Address("Minsk", "Kurchatova", 12, 32)), "12345jk"),
           employees,
           new List<Building> {
             new Building("Building", new Address("Minsk", "Bogdanovicha", 85, 0),
@@ -198,15 +198,21 @@ internal class Program
                                       }
                                     );
 
-        c4.AddSubject(new SubjectScore(90, "English"));
+        c4.AddSubject(new SubjectScore(90, "Math"));
 
         un2.AddEmployee(new Teacher(
             new Person("Donskaya", "Irina", new Address("Minsk", "Sovetskaya", 41, 17)),
             "23344jjhh",
             new Course("Language", "Belarusian language course")));
 
-        
-                
+
+        var c1 = new SubjectScore(50, "jhg");
+        var c2 = new SubjectScore(50, "jhg");
+
+
+        bool ddd = un1.Equals(un2);
+
+
         Console.ReadKey(); 
     }
 }

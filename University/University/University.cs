@@ -17,26 +17,32 @@ namespace MyApplication
             Buildings = buildings;
         }
 
-        public override bool Equals(object? obj)
+        /*public override bool Equals(object? obj)
         {
             University other = obj as University;
             bool equalResult = this.Rector.Equals(other?.Rector);
             return equalResult;
+        }*/
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is University other)
+            {
+                bool equalResult = (this.Rector.Equals(other.Rector));
+                return equalResult;
+            }
+            return false;
         }
+
 
         public bool AddEmployee(UniversityEmployee newEmployee)
         {
-            foreach (var employee in Employees)
+            if (Employees.Contains(newEmployee))
             {
-                if (employee.Equals(newEmployee))
-                {
-                    return false;
-                }
-
+                return false;
             }
             Employees.Add(newEmployee);
             return true;
-
         }
     }
 }

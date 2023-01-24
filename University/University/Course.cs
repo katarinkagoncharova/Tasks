@@ -13,12 +13,13 @@ namespace MyApplication
 
         public override bool Equals(object? obj)
         {
-            Course other = obj as Course;
-            bool equalResult = (this.CourseName == other?.CourseName);
-            return equalResult;
+            if (obj is Course other)
+            {
+                bool equalResult = (this.CourseName == other.CourseName);
+                return equalResult;
+            }
+            return false;
         }
-
-
     }
 
 
