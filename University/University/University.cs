@@ -16,14 +16,7 @@ namespace MyApplication
             Employees = employees;
             Buildings = buildings;
         }
-
-        /*public override bool Equals(object? obj)
-        {
-            University other = obj as University;
-            bool equalResult = this.Rector.Equals(other?.Rector);
-            return equalResult;
-        }*/
-
+       
         public override bool Equals(object? obj)
         {
             if (obj is University other)
@@ -33,7 +26,6 @@ namespace MyApplication
             }
             return false;
         }
-
 
         public bool AddEmployee(UniversityEmployee newEmployee)
         {

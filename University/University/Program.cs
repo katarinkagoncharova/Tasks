@@ -1,4 +1,8 @@
-﻿namespace MyApplication;
+﻿using System;
+using System.Collections.Immutable;
+using System.Security.Cryptography.X509Certificates;
+
+namespace MyApplication;
 
 internal class Program
 {
@@ -136,27 +140,41 @@ internal class Program
         //* end TASK 2* end
 
         Teacher teacher1 = new Teacher(
-            new Person("Donskaya", "Irina", new Address("Minsk", "Sovetskaya", 41, 17)),
-            "23344jy",
+            new Person("Irina", "Donskaya", new Address("Minsk", "Sovetskaya", 41, 17)),
+            "12345jy",
             new Course("Language", "Belarusian language course"));
 
+        Teacher teacher2 = new Teacher(
+            new Person("Olga", "Donskaya", new Address("Minsk", "Esinina", 144, 189)),
+            "23456jo",
+            new Course("Physics", "Mechanics"));
+
+
         DegreeTeacher dTeacher1 = new DegreeTeacher(
-            new Person("Smirnov", "Alexsandr", new Address("Smolevichi", "Mira", 81, 19)),
-            "23344jj",
-            new Course("Language", "Probability theoty"),
+            new Person("Alexsandr", "Smirnov", new Address("Smolevichi", "Mira", 81, 19)),
+            "13344jj",
+            new Course("Mathematics", "Probability theoty"),
             "Doctor of Sciences",
             "Docent");
 
+        DegreeTeacher dTeacher2 = new DegreeTeacher(
+            new Person("Alexsandra", "Smirnova", new Address("Smolevichi", "Mira", 81, 19)),
+            "34567hy",
+            new Course("Physics", "Mechanics"),
+            "Doctor of Sciences",
+            "Professor");
+
+
         SupportStaff staff1 = new SupportStaff(
-            new Person("Kuzina", "Elena", new Address("Minsk", "Angarskaya", 15, 27)),
-            "23344jj",
+            new Person("Elena", "Kuzina", new Address("Minsk", "Angarskaya", 15, 27)),
+            "36985ty",
             "Cleaner");
 
         SupportStaff staff2 = new SupportStaff(
-            new Person("Kuzin", "Viktor", new Address("Minsk", "Angarskaya", 15, 27)),
+            new Person("Viktor", "Kuzin", new Address("Minsk", "Angarskaya", 15, 27)),
             "85236oi", "Driver");
 
-        List<UniversityEmployee> employees = new List<UniversityEmployee> { teacher1, dTeacher1, staff1, staff2 };
+        List<UniversityEmployee> employees = new List<UniversityEmployee> { teacher1, teacher2, dTeacher1, dTeacher2, staff1, staff2 };
 
 
         University un1 = new University(
@@ -169,50 +187,59 @@ internal class Program
                 new Room(101, "lecture"),
                 new Room(102, "laboratory"),
                 new Room(103, "auxiliary")
-              })
-          }
-        );
-
-
-        University un2 = new University(
-          new Address("Minsk", "Bogdanovicha", 85, 0),
-          new Rector(new Person("Chernov", "Maxim", new Address("Minsk", "Kurchatova", 12, 32)), "12345jk"),
-          employees,
-          new List<Building> {
-            new Building("Building", new Address("Minsk", "Bogdanovicha", 85, 0),
+              }),
+            new Building("Building", new Address("Gomel", "Sovetskaya", 8, 0),
               new List < Room > {
-                new Room(201, "lecture"),
-                new Room(203, "laboratory"),
-                new Room(207, "auxiliary")
-              })
+                new Room(101, "lecture"),
+                new Room(102, "laboratory"),
+                new Room(103, "auxiliary"),
+                new Room(104, "lecture"),
+                new Room(201, "laboratory")
+              }),
+
           }
         );
+     
 
-        Candidate c4 = new Candidate(new Person("Abramov", "Semen", new Address("Minsk", "Amurskaya", 5, 48)),
-                                    new List<SubjectScore>
-                                      {
-                                         new SubjectScore(60, "Math"),
-                                         new SubjectScore(70, "Physics"),
-                                         new SubjectScore(80, "Literature"),
-                                         new SubjectScore(90, "Language")
-                                      }
-                                    );
+        var filter = un1.Employees.Where(x => x.Person.Surname.StartsWith("S")).OrderBy(x => x.TaxID).ToList();
+        Console.WriteLine($"1. Surnames of employees starting with a letter S:");
+        foreach (var i in filter)
+        {
+            Console.WriteLine(i.TaxID + " " + i.Person.Surname);
+        }
+                
+        var filter2 = un1.Employees.Select(x => x as Teacher).Where(x => x?.Course.CourseName == "Physics").ToList();
+        Console.WriteLine($"2. Employees who teach Physics:");
+        foreach (var i in filter2)
+        {
+            Console.WriteLine(i.Person.Name + " " + i.Person.Surname);
+        }
 
-        c4.AddSubject(new SubjectScore(90, "Math"));
+        Console.WriteLine($"3. Employees' TaxID and GetOfficialDuties:");
+        var filter3 = un1.Employees.Select(x => (x.TaxID, x.GetOfficialDuties())).ToList();
+        foreach (var i in filter3)
+        {
+            Console.WriteLine(i);
 
-        un2.AddEmployee(new Teacher(
-            new Person("Donskaya", "Irina", new Address("Minsk", "Sovetskaya", 41, 17)),
-            "23344jjhh",
-            new Course("Language", "Belarusian language course")));
+        Console.WriteLine($"4. Addresses of building that have room 101:");
+        var filter4 = un1.Buildings.Select(x => (x.Address, x.Rooms.Where(x => x.Number == 101))).Select(x => x.Address).ToList();
+        //var filter5 = un1.Buildings.Where(x => x.Rooms.Any(x => x.Number == 101)).Select(x =>x.Address).ToList();
+        foreach (var i in filter4)
+        {
+            Console.WriteLine(i.City + " " + i.Street + " " + i.HouseNumber);
+        }
+
+        Console.WriteLine($"5. Address of building with the maximum number of rooms:");
+        var filter6 = un1.Buildings.OrderByDescending(x => x.Rooms.Count).First().Address;
+        Console.WriteLine(filter6.City + " " + filter6.Street + " " + filter6.HouseNumber);
+
+        Console.WriteLine($"6. Most common surname:");
+        var filter7 = un1.Employees.GroupBy(x => x.Person.Surname).MaxBy(x => x.Count());
+        Console.WriteLine($"Surname {filter7?.Key}, repeats {filter7?.Count()} times");
 
 
-        var c1 = new SubjectScore(50, "jhg");
-        var c2 = new SubjectScore(50, "jhg");
+        
 
-
-        bool ddd = un1.Equals(un2);
-
-
-        Console.ReadKey(); 
+       Console.ReadKey(); 
     }
 }
