@@ -141,7 +141,7 @@ internal class Program
 
         Teacher teacher1 = new Teacher(
             new Person("Irina", "Donskaya", new Address("Minsk", "Sovetskaya", 41, 17)),
-            "12345jy",
+            "12345kj",
             new Course("Language", "Belarusian language course"));
 
         Teacher teacher2 = new Teacher(
@@ -199,7 +199,7 @@ internal class Program
 
           }
         );
-     
+
 
         var filter = un1.Employees.Where(x => x.Person.Surname.StartsWith("S")).OrderBy(x => x.TaxID).ToList();
         Console.WriteLine($"1. Surnames of employees starting with a letter S:");
@@ -207,7 +207,7 @@ internal class Program
         {
             Console.WriteLine(i.TaxID + " " + i.Person.Surname);
         }
-                
+
         var filter2 = un1.Employees.Select(x => x as Teacher).Where(x => x?.Course.CourseName == "Physics").ToList();
         Console.WriteLine($"2. Employees who teach Physics:");
         foreach (var i in filter2)
@@ -221,25 +221,30 @@ internal class Program
         {
             Console.WriteLine(i);
 
-        Console.WriteLine($"4. Addresses of building that have room 101:");
-        var filter4 = un1.Buildings.Select(x => (x.Address, x.Rooms.Where(x => x.Number == 101))).Select(x => x.Address).ToList();
-        //var filter5 = un1.Buildings.Where(x => x.Rooms.Any(x => x.Number == 101)).Select(x =>x.Address).ToList();
-        foreach (var i in filter4)
-        {
-            Console.WriteLine(i.City + " " + i.Street + " " + i.HouseNumber);
+            Console.WriteLine($"4. Addresses of building that have room 101:");
+            var filter4 = un1.Buildings.Select(x => (x.Address, x.Rooms.Where(x => x.Number == 101))).Select(x => x.Address).ToList();
+            //var filter5 = un1.Buildings.Where(x => x.Rooms.Any(x => x.Number == 101)).Select(x =>x.Address).ToList();
+            foreach (var f in filter4)
+            {
+                Console.WriteLine(f.City + " " + f.Street + " " + f.HouseNumber);
+            }
+
+            Console.WriteLine($"5. Address of building with the maximum number of rooms:");
+            var filter6 = un1.Buildings.OrderByDescending(x => x.Rooms.Count).First().Address;
+            Console.WriteLine(filter6.City + " " + filter6.Street + " " + filter6.HouseNumber);
+
+            Console.WriteLine($"6. Most common surname:");
+            var filter7 = un1.Employees.GroupBy(x => x.Person.Surname).MaxBy(x => x.Count());
+            Console.WriteLine($"Surname {filter7?.Key}, repeats {filter7?.Count()} times");
+
+
+            un1.Employees.Sort();
+            un1.Employees.Sort(new NameSurnameLenghtComparer());
+            var filter8 = un1.Employees.OrderByDescending(x => (x.Person.Name.Length + x.Person.Surname.Length));
+
+
+
+            Console.ReadKey();
         }
-
-        Console.WriteLine($"5. Address of building with the maximum number of rooms:");
-        var filter6 = un1.Buildings.OrderByDescending(x => x.Rooms.Count).First().Address;
-        Console.WriteLine(filter6.City + " " + filter6.Street + " " + filter6.HouseNumber);
-
-        Console.WriteLine($"6. Most common surname:");
-        var filter7 = un1.Employees.GroupBy(x => x.Person.Surname).MaxBy(x => x.Count());
-        Console.WriteLine($"Surname {filter7?.Key}, repeats {filter7?.Count()} times");
-
-
-        
-
-       Console.ReadKey(); 
     }
 }
