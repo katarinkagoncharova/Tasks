@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyApplication
+﻿namespace MyApplication
 {
-    internal class NameSurnameLenghtComparer : IComparer<UniversityEmployee>
+    public class NameLenghtComparer : IComparer<UniversityEmployee>
     {
-        public int Compare(UniversityEmployee? x, UniversityEmployee? y)
+        public int Compare(UniversityEmployee x, UniversityEmployee y)
         {
-            return (y.Person.Name.Length + y.Person.Surname.Length).CompareTo(x.Person.Name.Length + x.Person.Surname.Length);
+            if (x == null || y == null)
+            { 
+                throw new ArgumentNullException("Can't compare to null");
+            }
+            return y.Person.FullNameLength().CompareTo(x.Person.FullNameLength());        
         }
     }
 }

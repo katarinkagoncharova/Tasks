@@ -2,7 +2,7 @@
 
 namespace MyApplication;
 
-internal class DegreeTeacher: Teacher
+public class DegreeTeacher: Teacher
 {
     public string ScienceDegree { get; set; }
     public string Rank { get; set; }

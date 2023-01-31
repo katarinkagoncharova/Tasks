@@ -1,7 +1,7 @@
 ﻿
 namespace MyApplication
 {
-    internal class University
+    public class University
     {
         public Address Address { get; set; }
         public Rector Rector { get; set; }
@@ -21,7 +21,7 @@ namespace MyApplication
         {
             if (obj is University other)
             {
-                bool equalResult = (this.Rector.Equals(other.Rector));
+                bool equalResult = (Rector.Equals(other.Rector));
                 return equalResult;
             }
             return false;

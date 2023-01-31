@@ -1,8 +1,6 @@
-﻿
+﻿namespace MyApplication;
 
-namespace MyApplication;
-
-internal class Person
+public class Person
 {
     public string Name { get; set; }
     public string Surname { get; set; }
@@ -30,5 +28,10 @@ internal class Person
             return equalResult;
         }
         return false;
+    }
+
+    public int FullNameLength()
+    { 
+        return Name.Length + Surname.Length;
     }
 }

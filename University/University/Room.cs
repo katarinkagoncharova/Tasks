@@ -1,6 +1,6 @@
 ﻿namespace MyApplication;
 
-internal class Room
+public class Room
 {
     public int Number { get; set; }
     public string Purpose { get; set; }
@@ -15,8 +15,7 @@ internal class Room
     {
         if (obj is Room other)
         {
-            bool equalResult = (this.Purpose == other.Purpose);
-            return equalResult;
+            return (Purpose == other.Purpose) && (Number == other.Number);
         }
         return false;
     }

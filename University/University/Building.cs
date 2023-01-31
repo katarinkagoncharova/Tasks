@@ -1,6 +1,6 @@
 ﻿namespace MyApplication;
 
-internal class Building:Assets
+public class Building:Assets
 {
     public Address Address { get; set; }
     public List<Room> Rooms { get; set; }

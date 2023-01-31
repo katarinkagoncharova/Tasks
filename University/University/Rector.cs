@@ -1,7 +1,7 @@
 ﻿
 namespace MyApplication;
 
-internal class Rector : UniversityEmployee
+public class Rector : UniversityEmployee
 {
     public Rector(Person person, string taxId) : base(person, taxId)
     {

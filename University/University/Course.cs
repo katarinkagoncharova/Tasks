@@ -1,7 +1,7 @@
 ﻿
 namespace MyApplication
 {
-    internal class Course
+    public class Course
     {
       public string CourseName { get; set; } 
       public string CourseDescripsion { get; set; }
@@ -22,10 +22,6 @@ namespace MyApplication
             return false;
         }
     }
-
-
-
-
  }
 
 

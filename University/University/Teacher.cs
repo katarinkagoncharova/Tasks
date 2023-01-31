@@ -2,7 +2,7 @@
 
 namespace MyApplication
 {
-    internal class Teacher: UniversityEmployee
+    public class Teacher: UniversityEmployee
     {
         public Course Course { get; set; }
         public Teacher(Person person, string taxId, Course course) : base(person, taxId)
@@ -14,7 +14,5 @@ namespace MyApplication
         {
             return $"{Person.Name} {Person.Surname} is a Teacher. Course is {Course.CourseName}";
         }
-
-       
     }
 }

@@ -1,10 +1,11 @@
 ﻿
 namespace MyApplication
 {
-    internal class Candidate
+    public class Candidate
     {
         public Person Person { get; set; }
         public List<SubjectScore> SubjectScores { get; set; }
+
         public Candidate(Person person, List<SubjectScore> subjectScores)
         {
             Person = person;
@@ -20,8 +21,7 @@ namespace MyApplication
             }
             return false;
         }
-
-       
+               
         public bool AddSubject(SubjectScore subjectitem)
         {
             if (SubjectScores.Contains(subjectitem))
@@ -31,8 +31,6 @@ namespace MyApplication
 
             SubjectScores.Add(subjectitem);
             return true;
-
         }
-
     }
 }

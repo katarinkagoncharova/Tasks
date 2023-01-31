@@ -1,7 +1,7 @@
 ﻿
 namespace MyApplication
 {
-    internal class SubjectScore
+    public class SubjectScore
     {
         private int _score;
         public int Score 
@@ -29,7 +29,7 @@ namespace MyApplication
         {
             if (obj is SubjectScore other)
             {
-                bool equalResult = (this.SubjectName == other.SubjectName);
+                bool equalResult = (SubjectName == other.SubjectName);
                 return equalResult;
             }
             return false;

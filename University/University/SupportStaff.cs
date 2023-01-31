@@ -2,7 +2,7 @@
 
 namespace MyApplication
 {
-    internal class SupportStaff: UniversityEmployee
+    public class SupportStaff: UniversityEmployee
     {
         public string Function { get;set;}
         public SupportStaff(Person person, string taxId, string function): base(person, taxId)
@@ -14,6 +14,5 @@ namespace MyApplication
             return $"{Person.Name} {Person.Surname} is a {Function}";
         }
     }
-
 }
 

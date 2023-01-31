@@ -1,7 +1,6 @@
-﻿
-namespace MyApplication;
+﻿namespace MyApplication;
 
-internal class Address
+public class Address
 {
     private int _houseNumber;
     private int _apartmentNumber;

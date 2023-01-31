@@ -1,26 +1,32 @@
-﻿
-
-using System.Reflection.Metadata.Ecma335;
-
-namespace MyApplication
+﻿namespace MyApplication
 {
-    internal abstract class UniversityEmployee:IComparable
-    {
+    public abstract class UniversityEmployee:IComparable
+    { 
+        private string _taxId; 
         public Person Person { get; set; }
-        public string TaxID { get; set; }
+        public string TaxId 
+        {
+            get 
+            { 
+                return _taxId; 
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Incorrect taxId");
+                }
+                else
+                {
+                    _taxId = value;  
+                }
+            }
+        }
+
         public UniversityEmployee (Person person, string taxId)
         {
-            if (taxId != String.Empty )
-            {
                 Person = person;
-                TaxID = taxId;
-            }
-            else
-            {
-                throw new ArgumentException("Tax ID cannot be an empty string");
-            }
-             
-
+                TaxId = taxId;
         }
 
         public abstract string GetOfficialDuties();
@@ -29,8 +35,7 @@ namespace MyApplication
         {
             if (obj is UniversityEmployee other)
             {
-                bool equalResult = (this.TaxID == other.TaxID);
-                return equalResult;
+                return TaxId == other.TaxId;
             }
             return false;
         }
@@ -39,22 +44,9 @@ namespace MyApplication
         {
             if (obj is UniversityEmployee other)
             {
-                if ((this.Person.Name.Length + this.Person.Surname.Length) >
-                   (other.Person.Name.Length + other.Person.Surname.Length))
-                {
-                    return -1;
-                }
-                else if ((this.Person.Name.Length + this.Person.Surname.Length) <
-                   (other.Person.Name.Length + other.Person.Surname.Length))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                return other.Person.FullNameLength() - Person.FullNameLength();
             } 
-                throw new ArgumentNullException(nameof(other));
+                throw new ArgumentException("Obj isn't UniversityEmployee");
         }
         
     }
