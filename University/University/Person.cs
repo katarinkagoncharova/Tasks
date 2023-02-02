@@ -15,7 +15,7 @@ public class Person
         }
         else
         {
-            throw new ArgumentException("The length Name + Surname exceeds 15 characters");
+            throw new ArgumentException("The length Name + Surname exceeds 20 characters");
         }
     }
    

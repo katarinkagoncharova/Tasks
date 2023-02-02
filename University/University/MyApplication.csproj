@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="MyApplication">
+      <HintPath>obj\Debug\net6.0\MyApplication.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
