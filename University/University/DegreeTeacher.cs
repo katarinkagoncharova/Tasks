@@ -1,6 +1,4 @@
-﻿
-
-namespace MyApplication;
+﻿namespace MyApplication;
 
 public class DegreeTeacher: Teacher
 {
@@ -12,6 +10,7 @@ public class DegreeTeacher: Teacher
         ScienceDegree = scienceDegree;
         Rank = rank;
     }
+
     public override string GetOfficialDuties()
     {
         return $"{Person.Name} {Person.Surname} is a Teacher. Course - {Course.CourseName}. Science degree - {ScienceDegree}";

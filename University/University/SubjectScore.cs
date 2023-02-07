@@ -13,8 +13,12 @@ namespace MyApplication
             set
             {
                 if (value > 0 && value < 101)
-                { 
+                {
                     _score = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Incorrect score");
                 }
             }
          }

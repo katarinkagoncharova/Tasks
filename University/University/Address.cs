@@ -18,6 +18,10 @@ public class Address
             {
                 _houseNumber = value;
             }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Incorrect house number");
+            }
         }   
     }
     public int ApartmentNumber 
@@ -34,7 +38,7 @@ public class Address
             }
             else
             {
-                Console.WriteLine("Incorrect input ApartmentNumber");
+                throw new ArgumentOutOfRangeException("Incorrect apartment number"); 
             }
         }   
     }
@@ -50,10 +54,10 @@ public class Address
     {
         if (obj is Address other)
         {
-            bool equalResult = (this.City == other.City) && 
-                               (this.Street == other.Street) &&
-                               (this.HouseNumber == other.HouseNumber) && 
-                               (this.ApartmentNumber == other.ApartmentNumber);
+            bool equalResult = (City == other.City) && 
+                               (Street == other.Street) &&
+                               (HouseNumber == other.HouseNumber) && 
+                               (ApartmentNumber == other.ApartmentNumber);
             return equalResult;
         }
         return false;

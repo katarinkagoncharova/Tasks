@@ -20,5 +20,4 @@ public class Building:Assets
         }
         return false;
     }
-
 }

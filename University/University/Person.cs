@@ -23,8 +23,8 @@ public class Person
     {
         if (obj is Person other)
         {
-            bool equalResult = (this.Name == other.Name) &&
-                               (this.Surname == other.Surname);
+            bool equalResult = (Name == other.Name) &&
+                               (Surname == other.Surname);
             return equalResult;
         }
         return false;

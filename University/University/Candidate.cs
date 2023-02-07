@@ -16,7 +16,7 @@ namespace MyApplication
         {
             if (obj is Candidate other)
             {
-                bool equalResult = (this.Person.Equals(other.Person));
+                bool equalResult = (Person.Equals(other.Person));
                 return equalResult;
             }
             return false;
@@ -28,7 +28,6 @@ namespace MyApplication
             {
                 return false;
             }
-
             SubjectScores.Add(subjectitem);
             return true;
         }
